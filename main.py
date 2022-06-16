@@ -407,9 +407,12 @@ if yes:
 
   sqrt(mean_squared_error(test_df['preds'], y_test))
 
-  test_df['preds']
+  col1, col2 = st.columns(2)
 
-  test_df['results__maxExternalScore']
+  with col1:
+    st.table(test_df['preds'])
+  with col2:
+    st.table(test_df['results__maxExternalScore'])
 
   test_df['diff'] = abs(test_df['preds'] - test_df['results__maxExternalScore'])
 
@@ -419,7 +422,7 @@ if yes:
 
   #list(test_df['diff']).index(min(test_df['diff'].values))
 
-  #final = test_df[['results__maxExternalScore','preds','diff']]
+  final = test_df[['results__maxExternalScore','preds','diff']]
 
   #st.sidebar.table(final[final['diff'] <= 1.5])
 

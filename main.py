@@ -161,8 +161,9 @@ yes = st.button("Predict")
 
 if yes:
 
-  """## **Define** Word Embedding/Doc2Vec Functionality Tools"""
+  #"""## **Define** Word Embedding/Doc2Vec Functionality Tools"""
 
+  st.success('Define Word Embedding/Doc2Vec Functionality Tools')
   logger = logging.getLogger(__name__)
   logger.setLevel(logging.DEBUG)
 
@@ -176,7 +177,8 @@ if yes:
   p_stemmer = PorterStemmer()
   ## ^ shortens the lookup, and normalizes sentences.
 
-  """## Import and Prepare Data (finaloutput.csv)"""
+  #"""## Import and Prepare Data (finaloutput.csv)"""
+  st.success('Import and Prepare Data (finaloutput.csv)')
 
   datapath = 'data/finaloutput.csv'
   df = pd.read_csv(datapath)
@@ -197,7 +199,9 @@ if yes:
   train_corpus = list(read_corpus(train_df['results__description']))
   test_corpus = list(read_corpus(test_df['results__description'], tokens_only=True))
 
-  """## Doc2Vec Model Creation and Training"""
+  #"""## Doc2Vec Model Creation and Training"""
+
+  st.success('Doc2Vec Model Creation and Training')
 
   model = gensim.models.doc2vec.Doc2Vec(vector_size=50, min_count=2, epochs=40)
 
@@ -220,9 +224,10 @@ if yes:
           return -1
       return vector
 
-  """## Appending Word Embeddings to Data File
+  #"""## Appending Word Embeddings to Data File
 
-  """
+  #"""
+  st.success('Appending Word Embeddings to Data File')
 
   #Append DOC2VEC Vectors to DF
   final_corpus = list(read_corpus(df['results__description'], tokens_only= True))
@@ -235,8 +240,9 @@ if yes:
   df['vector_item'] = column3
   df.head()
 
-  """##Organizing Inputs and Creating Train/Test Dataframes"""
+  #"""##Organizing Inputs and Creating Train/Test Dataframes"""
 
+  st.success('Organizing Inputs and Creating Train/Test Dataframes')
   #Divide Vectors into 50 individual word embeddings (collectively represent descriptions)
 
   bigList = []
@@ -267,7 +273,8 @@ if yes:
   X_test = test_df[X]
   y_test = test_df[y]
 
-  """##Defining Required Functions and Begin FastAi Training Process """
+  #"""##Defining Required Functions and Begin FastAi Training Process """
+  st.success('Defining Required Functions and Begin FastAi Training Process')
 
   #-----------------------------------------------------------------xxx-----------------------------------------------------------------
   # Read Data and Load Packages
@@ -362,7 +369,8 @@ if yes:
   learn.fit_one_cycle(n_epoch = 30, wd = 0.2)
 
 
-  """##Begin Testing Process"""
+  #"""##Begin Testing Process"""
+  st.success('Begin Testing Process')
 
   # path = '/Users/j0s0m85/Desktop/Replenishment Planning/Final/production/'
   path = '.'
@@ -394,7 +402,8 @@ if yes:
 
   test_df['preds'] = preds
 
-  """##Evaluating Results"""
+  #"""##Evaluating Results"""
+  st.success('Evaluating Results')
 
   sqrt(mean_squared_error(test_df['preds'], y_test))
 
@@ -410,9 +419,9 @@ if yes:
 
   #list(test_df['diff']).index(min(test_df['diff'].values))
 
-  final = test_df[['results__maxExternalScore','preds','diff']]
+  #final = test_df[['results__maxExternalScore','preds','diff']]
 
-  st.sidebar.table(final[final['diff'] <= 1.5])
+  #st.sidebar.table(final[final['diff'] <= 1.5])
 
   #MAE
   st.sidebar.metric(label='Mean Absolute Error',value = mean_absolute_error(final['preds'],final['results__maxExternalScore']))

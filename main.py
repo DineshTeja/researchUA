@@ -347,7 +347,8 @@ if yes:
 
   #dls = to.dataloaders(bs=batch_size)
 
-  dls = DataLoader(batch_size)
+  
+  dls = to.dataloaders(batch_size)
 
   dls.c = 1
   max_log_y = np.log(1.2) + np.max(df['results__maxExternalScore'])

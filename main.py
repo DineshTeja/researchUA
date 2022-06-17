@@ -157,6 +157,17 @@ from joblib import Parallel, delayed
 
 st.title('CVSS Score Prediction Model Demo')
 
+epochs = st.slider("Epochs",10,50,step=5)
+
+batch_sizes = ['128','256','512','1024']
+
+select_batch_size = st.selectbox("Batch Size",batch_sizes)
+
+embed_p_set = ['0.01','0.02','0.04','0.1','0.2','0.5']
+
+select_embed_p = st.selectbox("embed_p",embed_p_set)
+
+
 yes = st.button("Predict")
 
 if yes:
@@ -333,7 +344,7 @@ if yes:
 
   dep_var = 'results__maxExternalScore'
   cat_names = ['results__hasExploit',	'results__hasFix' ]
-  batch_size = 512
+  batch_size = 512 #current 512
   cont_names = []
 
   for i in range(50):
@@ -355,18 +366,19 @@ if yes:
   #dls = to.dataloaders(bs=batch_size)
 
   
-  dls = to.dataloaders(batch_size)
+  dls = to.dataloaders(select_batch_size)
 
   dls.c = 1
   max_log_y = np.log(1.2) + np.max(df['results__maxExternalScore'])
   y_range = (0, np.max(df['results__maxExternalScore']))
 
   learn = tabular_learner(dls, layers=[200,100], loss_func=MSELossFlat(),
-                              config=tabular_config(ps=[0.001,0.01], embed_p=0.02, y_range=y_range), 
-                              metrics=[mean_absolute_error,mean_squared_error])#exp_rmspe)
+                              config=tabular_config(ps=[0.001,0.01], embed_p=select_embed_p, y_range=y_range), 
+                              metrics=[mean_absolute_error,mean_squared_error])#exp_rmspe) 
+                              #current embed_p 0.02
 
 
-  learn.fit_one_cycle(n_epoch = 30, wd = 0.2)
+  learn.fit_one_cycle(n_epoch = epochs, wd = 0.2) #current nepoch=30, wd =0.2
 
 
   #"""##Begin Testing Process"""

@@ -386,7 +386,7 @@ if yes:
                               #current embed_p 0.02
 
 
-  learn.fit_one_cycle(n_epoch = epochs, max_lr=3e-4, wd = select_wd) #current nepoch=30, wd =0.2
+  learn.fit_one_cycle(n_epoch = epochs, wd = select_wd) #current nepoch=30, wd =0.2
 
 
   #"""##Begin Testing Process"""

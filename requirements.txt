@@ -2,4 +2,3 @@ gensim
 scikit-learn
 fastai
 nltk
-bayes-opt == 1.2.0

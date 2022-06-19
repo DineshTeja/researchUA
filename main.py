@@ -155,6 +155,8 @@ import pickle
 import time
 from joblib import Parallel, delayed
 
+from bayes_opt import BayesianOptimization
+
 st.title('CVSS Score Prediction Model Demo')
 
 epochs = st.slider("Epochs",10,50,step=5)

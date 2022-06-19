@@ -165,7 +165,7 @@ batch_sizes = [128,256,512,1024]
 
 select_batch_size = st.selectbox("Batch Size",batch_sizes)
 
-embed_p_set = [0.01,0.02,0.04,0.1,0.2,0.5]
+embed_p_set = [0.01,0.02,0.04,0.1,0.2,0.4,0.5]
 
 select_embed_p = st.selectbox("embed_p",embed_p_set)
 

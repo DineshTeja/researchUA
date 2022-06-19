@@ -171,9 +171,9 @@ wd_set = [0.0,0.1,0.2,0.3,0.4,0.5]
 
 select_wd = st.selectbox("Weight Decay (wd)",wd_set)
 
-lr_set = [3e-9,5e-6,3e-4,1e-2]
+layer_set = [[100,200],[50,200],[50,100,200],[50,100,2000]]
 
-select_lr = st.selectbox("Learning Rate (lr)",lr_set)
+select_layer_opt = st.selectbox("Layer Options",layer_set)
 
 
 yes = st.button("Predict")
@@ -380,10 +380,11 @@ if yes:
   max_log_y = np.log(1.2) + np.max(df['results__maxExternalScore'])
   y_range = (0, np.max(df['results__maxExternalScore']))
 
-  learn = tabular_learner(dls, layers=[200,100], loss_func=MSELossFlat(),
+  learn = tabular_learner(dls, layers=select_layer_opt, loss_func=MSELossFlat(),
                               config=tabular_config(ps=[0.001,0.01], embed_p=select_embed_p, y_range=y_range), 
                               metrics=[mean_absolute_error,mean_squared_error])#exp_rmspe) 
                               #current embed_p 0.02
+                              ##current layers = [200,100]
 
 
   learn.fit_one_cycle(n_epoch = epochs, wd = select_wd) #current nepoch=30, wd =0.2

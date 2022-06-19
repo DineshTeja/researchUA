@@ -191,7 +191,11 @@ else:
   select_layer_opt = [select_layer_1,select_layer_2,select_layer_3]
 
 
-yes = st.button("Predict")
+col1, col2 = st.columns(2)
+with col1:
+  yes = st.button("Predict")
+with col2:
+  optimize = st.button("Optimize")
 
 if yes:
 

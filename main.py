@@ -171,9 +171,24 @@ wd_set = [0.0,0.1,0.2,0.3,0.4,0.5]
 
 select_wd = st.selectbox("Weight Decay (wd)",wd_set)
 
-layer_set = [[100,200],[50,200],[50,100,200],[50,100,2000]]
+n_layers_set = [1,2,3]
 
-select_layer_opt = st.selectbox("Layer Options",layer_set)
+select_n_layers = st.selectbox("Number of Layers",n_layers_set)
+
+if select_n_layers == 1:
+  select_layer_1 = st.slider("Layer 1",50,200,step=10)
+  select_layer_opt = [select_layer_1]
+
+elif select_n_layers == 2:
+  select_layer_1 = st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = st.slider("Layer 2",100,1000,step=10)
+  select_layer_opt = [select_layer_1,select_layer_2]
+
+else:
+  select_layer_1 = st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = st.slider("Layer 2",100,1000,step=10)
+  select_layer_3 = st.slider("Layer 3",200,2000,step=10)
+  select_layer_opt = [select_layer_1,select_layer_2,select_layer_3]
 
 
 yes = st.button("Predict")

@@ -2,4 +2,4 @@ gensim
 scikit-learn
 fastai
 nltk
-bayesian-optimization
+#bayesian-optimization

@@ -155,7 +155,7 @@ import pickle
 import time
 from joblib import Parallel, delayed
 
-from bayes_opt import BayesianOptimization
+#from bayes_opt import BayesianOptimization
 
 st.title('CVSS Score Prediction Model Demo')
 

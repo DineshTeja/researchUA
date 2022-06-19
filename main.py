@@ -381,7 +381,7 @@ if yes:
   y_range = (0, np.max(df['results__maxExternalScore']))
 
   learn = tabular_learner(dls, layers=[200,100], loss_func=MSELossFlat(),
-                              config=tabular_config(ps=[0.001,0.01], embed_p=select_embed_p, y_range=y_range), 
+                              config=tabular_config(ps=[0.001,0.01], embed_p=select_embed_p, y_range=y_range, act_cls=ReLU(inplace=True)), 
                               metrics=[mean_absolute_error,mean_squared_error])#exp_rmspe) 
                               #current embed_p 0.02
 

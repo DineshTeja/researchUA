@@ -167,6 +167,14 @@ embed_p_set = [0.01,0.02,0.04,0.1,0.2,0.5]
 
 select_embed_p = st.selectbox("embed_p",embed_p_set)
 
+wd_set = [0.0,0.1,0.2,0.3,0.4,0.5]
+
+select_wd = st.selectbox("Weight Decay (wd)",wd_set)
+
+lr_set = [3e-9,5e-6,3e-4,1e-2]
+
+select_lr = st.selectbox("Learning Rate (lr)",lr_set)
+
 
 yes = st.button("Predict")
 
@@ -378,7 +386,7 @@ if yes:
                               #current embed_p 0.02
 
 
-  learn.fit_one_cycle(n_epoch = epochs, wd = 0.2) #current nepoch=30, wd =0.2
+  learn.fit_one_cycle(n_epoch = epochs, learning_rate= select_lr, wd = select_wd) #current nepoch=30, wd =0.2
 
 
   #"""##Begin Testing Process"""

@@ -731,7 +731,6 @@ if optimize:
   st.success('Identifying most optimal parameter set')
 
   optim.maximize(n_iter=10)
-
+  
   st.sidebar.text(optim.max)
-
 

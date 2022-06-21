@@ -178,18 +178,18 @@ n_layers_set = [1,2,3]
 select_n_layers = st.selectbox("Number of Layers",n_layers_set)
 
 if select_n_layers == 1:
-  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
+  select_layer_1 = int(st.number_input(label='Layer 1'))#st.slider("Layer 1",50,200,step=10)
   select_layer_opt = [select_layer_1]
 
 elif select_n_layers == 2:
-  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
-  select_layer_2 = st.number_input(label='Layer 2')#st.slider("Layer 2",100,1000,step=10)
+  select_layer_1 = int(st.number_input(label='Layer 1'))#st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = int(st.number_input(label='Layer 2'))#st.slider("Layer 2",100,1000,step=10)
   select_layer_opt = [select_layer_1,select_layer_2]
 
 else:
-  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
-  select_layer_2 = st.number_input(label='Layer 2')#st.slider("Layer 2",100,1000,step=10)
-  select_layer_3 = st.number_input(label='Layer 3')#st.slider("Layer 3",200,2000,step=10)
+  select_layer_1 = int(st.number_input(label='Layer 1'))#st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = int(st.number_input(label='Layer 2'))#st.slider("Layer 2",100,1000,step=10)
+  select_layer_3 = int(st.number_input(label='Layer 3'))#st.slider("Layer 3",200,2000,step=10)
   select_layer_opt = [select_layer_1,select_layer_2,select_layer_3]
 
 

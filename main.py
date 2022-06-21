@@ -167,29 +167,29 @@ select_batch_size = st.selectbox("Batch Size",batch_sizes)
 
 embed_p_set = [0.01,0.02,0.04,0.1,0.2,0.4,0.5]
 
-select_embed_p = st.selectbox("embed_p",embed_p_set)
+select_embed_p = st.number_input(label = 'embed_p')#st.selectbox("embed_p",embed_p_set)
 
 wd_set = [0.0,0.01,0.02,0.03,0.04,0.1,0.2,0.3,0.4,0.5]
 
-select_wd = st.selectbox("Weight Decay (wd)",wd_set)
+select_wd = st.number_input(label='Weight Decay')#st.selectbox("Weight Decay (wd)",wd_set)
 
 n_layers_set = [1,2,3]
 
 select_n_layers = st.selectbox("Number of Layers",n_layers_set)
 
 if select_n_layers == 1:
-  select_layer_1 = st.slider("Layer 1",50,200,step=10)
+  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
   select_layer_opt = [select_layer_1]
 
 elif select_n_layers == 2:
-  select_layer_1 = st.slider("Layer 1",50,200,step=10)
-  select_layer_2 = st.slider("Layer 2",100,1000,step=10)
+  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = st.number_input(label='Layer 2')#st.slider("Layer 2",100,1000,step=10)
   select_layer_opt = [select_layer_1,select_layer_2]
 
 else:
-  select_layer_1 = st.slider("Layer 1",50,200,step=10)
-  select_layer_2 = st.slider("Layer 2",100,1000,step=10)
-  select_layer_3 = st.slider("Layer 3",200,2000,step=10)
+  select_layer_1 = st.number_input(label='Layer 1')#st.slider("Layer 1",50,200,step=10)
+  select_layer_2 = st.number_input(label='Layer 2')#st.slider("Layer 2",100,1000,step=10)
+  select_layer_3 = st.number_input(label='Layer 3')#st.slider("Layer 3",200,2000,step=10)
   select_layer_opt = [select_layer_1,select_layer_2,select_layer_3]
 
 
@@ -719,6 +719,7 @@ if optimize:
        'layer_1': (50, 200),
        'layer_2': (100, 1000),
        'layer_3': (200, 2000)}
+
   
   optim = BayesianOptimization(
     f = fit_with, # our fit function
@@ -734,3 +735,6 @@ if optimize:
   
   st.sidebar.text(optim.max)
 
+
+
+       

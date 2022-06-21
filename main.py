@@ -481,6 +481,13 @@ if yes:
   #MAPE
   st.sidebar.metric(label = 'Mean Absolute Percentage Error', value = mean_absolute_percentage_error(final['preds'],final['results__maxExternalScore']) - 0.05)
 
+  #MAPE
+  st.sidebar.metric(label = 'f1_score_micro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'micro'))
+  st.sidebar.metric(label = 'f1_score_macro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'macro'))
+  st.sidebar.metric(label = 'f1_score_weighted', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'weighted'))
+
+
+
 if optimize:
   #"""## **Define** Word Embedding/Doc2Vec Functionality Tools"""
 

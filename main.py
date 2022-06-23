@@ -411,7 +411,6 @@ if yes:
 
   learn.fit_one_cycle(n_epoch = epochs, wd = select_wd) #current nepoch=30, wd =0.2
 
-
   #"""##Begin Testing Process"""
   st.success('Begin Testing Process')
 

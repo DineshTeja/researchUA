@@ -159,7 +159,7 @@ from bayes_opt import BayesianOptimization
 
 st.title('CVSS Score Prediction Model Demo')
 
-epochs = st.slider("Epochs",10,50,step=5)
+epochs = st.slider("Epochs",10,100,step=5)
 
 batch_sizes = [64,128,256,512,1024]
 

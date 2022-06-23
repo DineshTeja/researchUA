@@ -161,7 +161,7 @@ st.title('CVSS Score Prediction Model Demo')
 
 epochs = st.slider("Epochs",10,50,step=5)
 
-batch_sizes = [128,256,512,1024]
+batch_sizes = [64,128,256,512,1024]
 
 select_batch_size = st.selectbox("Batch Size",batch_sizes)
 
@@ -482,9 +482,9 @@ if yes:
   st.sidebar.metric(label = 'Mean Absolute Percentage Error', value = mean_absolute_percentage_error(final['preds'],final['results__maxExternalScore']) - 0.05)
 
   #MAPE
-  st.sidebar.metric(label = 'f1_score_micro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'micro'))
-  st.sidebar.metric(label = 'f1_score_macro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'macro'))
-  st.sidebar.metric(label = 'f1_score_weighted', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'weighted'))
+  #st.sidebar.metric(label = 'f1_score_micro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'micro'))
+  #st.sidebar.metric(label = 'f1_score_macro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'macro'))
+  #st.sidebar.metric(label = 'f1_score_weighted', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'weighted'))
 
 
 

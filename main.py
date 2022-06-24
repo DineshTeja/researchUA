@@ -159,7 +159,7 @@ from bayes_opt import BayesianOptimization
 
 st.title('CVSS Score Prediction Model Demo')
 
-epochs = st.slider("Epochs",10,100,step=5)
+epochs = st.slider("Epochs",10,200,step=10)
 
 batch_sizes = [64,128,256,512,1024]
 
@@ -167,12 +167,12 @@ select_batch_size = st.selectbox("Batch Size",batch_sizes)
 
 embed_p_set = [0.01,0.02,0.04,0.1,0.2,0.4,0.5]
 
-select_embed_p = st.number_input(label = 'embed_p', format="%.3f")#st.selectbox("embed_p",embed_p_set)
+select_embed_p = st.number_input(label = 'embed_p', format="%.5f")#st.selectbox("embed_p",embed_p_set)
 
 wd_set = [0.0,0.01,0.02,0.03,0.04,0.1,0.2,0.3,0.4,0.5]
 
 
-select_wd = st.number_input(label='Weight Decay',format="%.3f")#st.selectbox("Weight Decay (wd)",wd_set)
+select_wd = st.number_input(label='Weight Decay',format="%.5f")#st.selectbox("Weight Decay (wd)",wd_set)
 
 n_layers_set = [1,2,3]
 

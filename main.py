@@ -163,7 +163,7 @@ st.title('CVSS Score Prediction Model Demo')
 
 #combination = st.selectbox("Pre-Select Hyperparameter Combination",combos)
 
-epochs = st.slider("Epochs",10,200,step=10)
+epochs = st.slider("Epochs",10,400,step=10)
 
 batch_sizes = [64,128,256,512,1024]
 

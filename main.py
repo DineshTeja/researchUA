@@ -159,6 +159,10 @@ from bayes_opt import BayesianOptimization
 
 st.title('CVSS Score Prediction Model Demo')
 
+combos = [1, 2, 3, 4, 5]
+
+combination = st.selectbox("Pre-Select Hyperparameter Combination",combos)
+
 epochs = st.slider("Epochs",10,200,step=10)
 
 batch_sizes = [64,128,256,512,1024]
@@ -193,6 +197,12 @@ else:
   select_layer_3 = int(st.number_input(label='Layer 3'))#st.slider("Layer 3",200,2000,step=10)
   select_layer_opt = [select_layer_1,select_layer_2,select_layer_3]
 
+if combination == 4:
+  select_embed_p = 0.415
+  select_wd = 0.283
+  select_n_layers = 2
+  select_layer_1 = 166.6
+  select_layer_2 = 745.6
 
 col1, col2 = st.columns(2)
 with col1:

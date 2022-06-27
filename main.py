@@ -461,6 +461,14 @@ if yes:
   with col2:
     st.table(test_df['results__maxExternalScore'])
 
+  def convert_df(df):
+     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+     return df.to_csv().encode('utf-8')
+
+  csv = convert_df(test_df['preds','results__maxExternalScore'])
+
+  st.sidebar.download_button(label = "Download Prediction Data", data = csv, file_name='modelPreds.csv')
+
   test_df['diff'] = abs(test_df['preds'] - test_df['results__maxExternalScore'])
 
   st.sidebar.metric(label = 'Mean', value = np.mean(test_df['diff'].values))

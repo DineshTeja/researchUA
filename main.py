@@ -461,14 +461,6 @@ if yes:
   with col2:
     st.table(test_df['results__maxExternalScore'])
 
-  def convert_df(df):
-     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-     return df.to_csv().encode('utf-8')
-
-  csv = convert_df(test_df['preds','results__maxExternalScore'])
-
-  st.sidebar.download_button(label = "Download Prediction Data", data = csv, file_name='modelPreds.csv')
-
   test_df['diff'] = abs(test_df['preds'] - test_df['results__maxExternalScore'])
 
   st.sidebar.metric(label = 'Mean', value = np.mean(test_df['diff'].values))
@@ -492,7 +484,8 @@ if yes:
 
   #MAPE
   st.sidebar.metric(label = 'Mean Absolute Percentage Error', value = mean_absolute_percentage_error(final['preds'],final['results__maxExternalScore']) - 0.05)
-
+  
+  st.sidebar.download_button(label = "Download Prediction Data", data = test_df['preds','results__maxExternalScore'], file_name='modelPreds.csv')
   #MAPE
   #st.sidebar.metric(label = 'f1_score_micro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'micro'))
   #st.sidebar.metric(label = 'f1_score_macro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'macro'))

@@ -485,8 +485,8 @@ if yes:
   #MAPE
   st.sidebar.metric(label = 'Mean Absolute Percentage Error', value = mean_absolute_percentage_error(final['preds'],final['results__maxExternalScore']) - 0.05)
   
-  fr = pd.to_csv(test_df['preds','results__maxExternalScore'])
-  st.sidebar.download_button(label = "Download Prediction Data", data = fr, file_name='modelPreds.csv')
+  #fr = pd.to_csv(test_df['preds','results__maxExternalScore'])
+  #st.sidebar.download_button(label = "Download Prediction Data", data = fr, file_name='modelPreds.csv')
   
   #MAPE
   #st.sidebar.metric(label = 'f1_score_micro', value = f1_score(final['results__maxExternalScore'],final['preds'],average= 'micro'))

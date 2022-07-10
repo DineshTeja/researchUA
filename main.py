@@ -230,6 +230,8 @@ if yes:
   datapath = 'data/cleanedFullOutput.csv'
   df = pd.read_csv(datapath)
 
+  st.text(str(len(df)))
+
   train_df, test_df = train_test_split(df, test_size = 0.3, random_state=1)
 
   import smart_open
